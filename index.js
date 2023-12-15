@@ -47,6 +47,7 @@ async function run() {
             const options = await appointmentOptionCollection.find(query).toArray();
             res.send(options)
         });
+        
 
        
 
@@ -132,6 +133,18 @@ async function run() {
       const result = await usersCollection.updateOne(filter, updatedDoc, option);
       res.send(result)
   })
+
+// app.get('/price',async(req,res)=>{
+//   const filter={}
+//   const option = { upsert: true };
+//       const updatedDoc = {
+//           $set: {
+//               price: 90
+//           }
+//       }
+//       const result = await appointmentOptionCollection.updateMany(filter, updatedDoc, option);
+//       res.send(result)
+// })
 
   app.delete('/users/:id', async(req, res)=>{
     const id = req.params;
