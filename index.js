@@ -37,11 +37,10 @@ async function run() {
         const appointmentOptionCollection = database.collection('ProductAll');
         const bookingCollection = database.collection('bookings');
         const usersCollection = database.collection('Users');
-        // const doctorsCollection = database.collection('Doctors');
+        
 
         app.get("/ProductAll", async (req,res)=>{
-            // const date = req.body.name;
-            // console.log(date);
+            
 
             const query = {};
             const options = await appointmentOptionCollection.find(query).toArray();
