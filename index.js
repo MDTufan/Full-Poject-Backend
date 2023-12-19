@@ -85,6 +85,13 @@ async function run() {
           const bookings = await bookingCollection.find(query).toArray();
           res.send(bookings)
       })
+        app.get('/bookings/:id', async (req, res) => {
+          const id = req.params.id;
+          
+          const query = {_id: new ObjectId(id)};
+          const booking = await bookingCollection.findOne(query);
+          res.send(booking);
+      })
 
         app.post('/bookings', async (req, res) => {
           const booking = req.body;
@@ -133,17 +140,7 @@ async function run() {
       res.send(result)
   })
 
-// app.get('/price',async(req,res)=>{
-//   const filter={}
-//   const option = { upsert: true };
-//       const updatedDoc = {
-//           $set: {
-//               price: 90
-//           }
-//       }
-//       const result = await appointmentOptionCollection.updateMany(filter, updatedDoc, option);
-//       res.send(result)
-// })
+
 
   app.delete('/users/:id', async(req, res)=>{
     const id = req.params;
